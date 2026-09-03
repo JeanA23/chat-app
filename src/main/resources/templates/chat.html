@@ -6,7 +6,7 @@
     <title>Chat Room</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="/css/css/chat.css" rel="stylesheet">
+    <link href="/css/chat.css" rel="stylesheet">
 </head>
 <body>
 <div class="chat-container">
@@ -114,14 +114,15 @@
 
 <!-- Hidden audio element for notification sound -->
 <audio id="messageSound" preload="auto">
-    <source src="/audio/notification.mp3" type="audio/mpeg">
+    <source src="/audio/audio_notification.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Hidden data -->
 <div id="currentUser" th:data-username="${currentUser.username}"
      th:data-color="${currentUser.avatarColor}" style="display: none;"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/chat.js"></script>
