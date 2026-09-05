@@ -15,7 +15,7 @@ import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
-public class WebConroller {
+public class WebController {
 
     private final UserService userService;
     private final MessageService messageService;
