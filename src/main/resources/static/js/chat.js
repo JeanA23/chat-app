@@ -17,7 +17,12 @@ currentUser = {
 }
 
 //Gérer les focus
-window.addEventListener('focus', () => isWindowFocused = true);
+window.addEventListener('focus', () => {
+    isWindowFocused = true
+    resetUnreadCount();
+
+});
+
 window.addEventListener('blur', () => isWindowFocused = false);
 
 function connect() {
@@ -96,8 +101,26 @@ function onMessageReceived(payload) {
         if (!isWindowFocused && message.sender.username !== currentUser.username) {
             showNotification(`New message from ${message.sender.username}!`)
             playNotificationSound();
+            incrementUnreadCount();
         }
     }
+}
+
+function incrementUnreadCount() {
+    unreadCount++;
+    const badge = document.getElementById('unreadCount');
+    badge.textContent = unreadCount;
+    badge.style.display = 'inline-block';
+
+    document.title = `(${unreadCount}) Chat Room`;
+}
+
+function resetUnreadCount() {
+    unreadCount = 0;
+    const badge = document.getElementById('unreadCount');
+    badge.style.display = 'none';
+
+    document.title = 'Chat Room';
 }
 
 function playNotificationSound() {
