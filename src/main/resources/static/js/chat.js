@@ -94,22 +94,30 @@ function onMessageReceived(payload) {
         showMessage(message);
 
         if (!isWindowFocused && message.sender.username !== currentUser.username) {
-
             showNotification(`New message from ${message.sender.username}!`)
+            playNotificationSound();
         }
+    }
+}
+
+function playNotificationSound() {
+
+    const audio = document.getElementById('messageSound');
+    if (audio) {
+        audio.play();
     }
 }
 
 function showNotification(message) {
 
-    const bagde = document.getElementById('notificationBadge');
+    const badge = document.getElementById('notificationBadge');
     const text = document.getElementById('notificationText');
 
     text.textContent = message;
-    bagde.style.display = 'block';
+    badge.style.display = 'block';
 
     setTimeout( () => {
-        bagde.style.display = 'none';
+        badge.style.display = 'none';
         text.textContent = '';
     }, 5000);
 }
