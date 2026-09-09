@@ -250,6 +250,14 @@ function sendMessage(event) {
     }
 }
 
+function leaveChat() {
+    if (stompClient && isConnected) {
+        stompClient.disconnect();
+    }
+
+    window.location.href = '/';
+}
+
 document.getElementById('messageForm').addEventListener('submit', sendMessage)
 document.getElementById('messageInput').addEventListener('input', handleTyping)
 
