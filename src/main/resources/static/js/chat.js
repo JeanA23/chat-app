@@ -92,8 +92,28 @@ function onMessageReceived(payload) {
         console.log('New message received!');
         hideTypingIndicator();
         showMessage(message);
+
+        if (!isWindowFocused && message.sender.username !== currentUser.username) {
+
+            showNotification(`New message from ${message.sender.username}!`)
+        }
     }
 }
+
+function showNotification(message) {
+
+    const bagde = document.getElementById('notificationBadge');
+    const text = document.getElementById('notificationText');
+
+    text.textContent = message;
+    bagde.style.display = 'block';
+
+    setTimeout( () => {
+        bagde.style.display = 'none';
+        text.textContent = '';
+    }, 5000);
+}
+
 
 function showMessage(message) {
     const messageArea = document.getElementById('messageArea');
